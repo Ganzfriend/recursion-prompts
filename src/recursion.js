@@ -25,13 +25,6 @@ var sum = function(array) {
   }
 
   return array[0] + (sum(array.slice(1)));
-
-  // var newArr = function (arr) {
-  //   var copy = arr.slice();
-  //   copy.shift();
-  //   return copy;
-  // };
-  // return array[0] + (sum(newArr(array)));
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
@@ -48,15 +41,13 @@ var arraySum = function(array) {
   } else if (array.length === 1 && (!Array.isArray(array[0]))) {
     return array[0];
   } else if (Array.isArray(array[0])) {
-    var concattedArr = array.concat(array[0]);
-    return arraySum(concattedArr);
+    var copy = array.slice();
+    var concatted = copy.concat(copy.shift());
+    return arraySum(concatted);
   }
-  var newArr = function (arr) {
-    var copy = arr.slice();
-    copy.shift();
-    return copy;
-  };
-  return array[0] + (arraySum(newArr(array)));
+
+  return array[0] + arraySum(array.slice(1));
+
 };
 
 
