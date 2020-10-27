@@ -84,7 +84,62 @@ var sumBelow = function(n) {
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
+// input: two integers
+// output: array of integers between
+// edge: negative numbers, no arguments provided
 var range = function(x, y) {
+  var result =  [];
+  var rangeLength;
+  if (x > y) {
+    rangeLength = (x - y) - 1;
+  } else {
+    rangeLength = (y - x) - 1;
+  }
+
+  if ((x > y && x - y <= 1) || (x < y && y - x <= 1)) {
+    return [];
+  }
+
+  if (result.length === rangeLength) {
+    return result;
+  }
+
+  if (x > y) {
+    result.push(x - 1);
+    return range(x - 1, y);
+  } else {
+    result.push(x + 1);
+    return range(x + 1, y);
+  }
+
+  // var positiveX = Math.abs(x);
+  // var positiveY = Math.abs(y);
+  // if (positiveX > positiveY && (positiveX - positiveY <= 1)) {
+  //   return [];
+  // } else if (positiveX > positiveY) {
+
+  //   result.push(x - 1);
+  // }
+
+  // if (x > y && x - y <= 1) {
+  //   return [];
+  // } else if (x === (y + 2)) {
+  //   result.push(x - 1);
+  //   return result;
+  // } else if (x > y) {
+  //   result.push(x - 1);
+  //   range(x - 1, y);
+  //   return result;
+  // } else if (y - x <= 1) {
+  //   return result;
+  // } else if (x === (y - 2)) {
+  //   result.push(x + 1);
+  //   return result;
+  // }
+  // result.push(x + 1);
+  // range(x + 1, y);
+  // return result;
+
 };
 
 // 7. Compute the exponent of a number.
