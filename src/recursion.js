@@ -90,44 +90,46 @@ var sumBelow = function(n) {
 var range = function(x, y) {
   var result =  [];
   var rangeLength = Math.abs(x - y) - 1;
-  var start;
-  var end;
+  // var start;
+
 
   if (rangeLength <= 1) {
     return [];
   }
 
-  if (x < y) {
-    start = x + 1;
-  } else {
-    start = x - 1;
-  }
+  // if (x < y) {
+  //   start = x + 1;
+  // } else {
+  //   start = x - 1;
+  // }
 
   if (x < y) {
-    end = y - 1;
-  } else {
-    end = y + 1;
+    result.push(x + 1);
   }
 
+  result.push(x - 1);
+
+
   if (x < y) {
-    while (rangeLength > 0) {
-      result.push(start);
-      start++;
-      rangeLength--;
-    }
+    // while (rangeLength > 0) {
+    //   result.push(start);
+    //   start++;
+    //   rangeLength--;
+    // }
+    result = result.concat(range(x + 1, y));
     return result;
   }
 
-  while (rangeLength > 0) {
-    result.push(start);
-    start--;
-    rangeLength--;
-  }
+  result = result.concat(range(x - 1, y));
   return result;
 
 
 
-
+  // if (x < y) {
+  //   end = y - 1;
+  // } else {
+  //   end = y + 1;
+  // }
 
 
   // if ((x > y && x - y <= 1) || (x < y && y - x <= 1)) {
