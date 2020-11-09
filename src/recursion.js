@@ -88,40 +88,75 @@ var sumBelow = function(n) {
 // output: array of integers between
 // edge: negative numbers, no arguments provided
 var range = function(x, y) {
-  var result =  [];
-  var rangeLength = Math.abs(x - y) - 1;
-  // var start;
+
+  var result = [];
 
 
-  if (rangeLength <= 1) {
-    return [];
+  if (x < y - 1) {
+    result.push(x + 1);
+    return result.concat(range(x + 1, y));
   }
+
+  if (x > y + 1) {
+    result.push(x - 1);
+    return result.concat(range(x - 1, y));
+  }
+
+  return result;
+
+
+  // var result = [];
 
   // if (x < y) {
-  //   start = x + 1;
-  // } else {
-  //   start = x - 1;
+  //   while (x < y - 1) {
+  //     x++;
+  //     result.push(x);
+  //   }
+  //   return result;
   // }
 
-  if (x < y) {
-    result.push(x + 1);
-  }
+  // while (x > y + 1) {
+  //   x--;
+  //   result.push(x);
+  // }
 
-  result.push(x - 1);
+  // return result;
 
 
-  if (x < y) {
-    // while (rangeLength > 0) {
-    //   result.push(start);
-    //   start++;
-    //   rangeLength--;
-    // }
-    result = result.concat(range(x + 1, y));
-    return result;
-  }
 
-  result = result.concat(range(x - 1, y));
-  return result;
+  // var result =  [];
+  // var rangeLength = Math.abs(x - y) - 1;
+  // // var start;
+
+  // if (rangeLength <= 1) {
+  //   return [];
+  // }
+
+  // // if (x < y) {
+  // //   start = x + 1;
+  // // } else {
+  // //   start = x - 1;
+  // // }
+
+  // if (x < y) {
+  //   result.push(x + 1);
+  // }
+
+  // result.push(x - 1);
+
+
+  // if (x < y) {
+  //   // while (rangeLength > 0) {
+  //   //   result.push(start);
+  //   //   start++;
+  //   //   rangeLength--;
+  //   // }
+  //   result = result.concat(range(x + 1, y));
+  //   return result;
+  // }
+
+  // result = result.concat(range(x - 1, y));
+  // return result;
 
 
 
