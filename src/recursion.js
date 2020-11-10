@@ -141,8 +141,58 @@ var exponent = function(base, exp) {
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
+
+// input: number
+// output: boolean
+// edge cases: negative int, decimal
+
+// keep diving the number by 2 until it does or does not reach 1
+// if input is less than 0, return false
+// if input is less than 1, greater than 0, multiple by 2 until it reaches 1 or surpasses 1
+// turns out, ints between 0 and 1 weren't included in this test!
+
 var powerOfTwo = function(n) {
+  if (n <= 0) {
+    return false;
+  }
+  if (n === 1) {
+    return true;
+  }
+
+  // if (n > 0 && n < 1) {
+  //   return powerOfTwo(n * 2);
+  // }
+
+  if (n > 1) {
+    return powerOfTwo(n / 2);
+  }
+
+  return false;
 };
+
+
+// if (n > 0 && n < 1) {
+//   if (powerOfTwo(n * 2) > 1) {
+//     return false;
+//   }
+// }
+// if (n > 1) {
+//   if (powerOfTwo(n / 2) < 1) {
+//     return false;
+//   }
+// }
+// return false;
+
+
+//while (n > 1) {
+  //   n /= 2;
+  // }
+  // if (n === 1) {
+  //   return true;
+  // }
+  // return false;
+
+
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
