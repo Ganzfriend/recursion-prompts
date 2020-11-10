@@ -205,15 +205,7 @@ var palindrome = function(string) {
   return isPalindrome;
 };
 
-// var i = -1;
-// if (i === Math.ceil(string.length / 2) && string[i] === string[Math.ceil(string.length / 2)]) {
-//   return true;
-// }
-// i++;
 
-
-// string = string.toLowerCase();
-// return string === reverse(string);
 
 
 
@@ -222,8 +214,62 @@ var palindrome = function(string) {
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
+
+// edge case: negative int, x or y are 0
+// keep subtracting y from x until x is less than y
 var modulo = function(x, y) {
+  if (y === 0) {
+    return NaN;
+  }
+
+  if (x === 0) {
+    return 0;
+  }
+
+  if (x < y && x > 0) {
+    return x;
+  }
+
+  if (x > y && x < 0) {
+    return x;
+  }
+
+  if (x < 0 && y > 0 && (x + y > 0)) {
+    return x;
+  }
+
+  return modulo(x - y, y);
+
+  // if (x > y) {
+  //  return modulo(x - y, y);
+  // }
+
+  // while (x < y) {
+  //   return modulo(x + y, y);
+  // }
+
+
+
+  // if (x < 0) {
+  //   x += x + x;
+  // }
+
+  // if (x > y) {
+  //   return modulo(x - y, y);
+  // }
+  // return x;
+
+
+  // if (x < y ) {
+  //   modulo(x + y, y);
+  // }
+  // return x;
+
 };
+
+
+
+
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
