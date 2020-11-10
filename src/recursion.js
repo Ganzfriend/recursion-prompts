@@ -91,152 +91,24 @@ var range = function(x, y) {
 
   var result = [];
 
-
   if (x < y - 1) {
-    result.push(x + 1);
-    return result.concat(range(x + 1, y));
+    x++;
+    result.push(x);
+    return result.concat(range(x, y));
   }
 
   if (x > y + 1) {
-    result.push(x - 1);
-    return result.concat(range(x - 1, y));
+    x--;
+    result.push(x);
+    return result.concat(range(x, y));
   }
 
   return result;
 
-
-  // var result = [];
-
-  // if (x < y) {
-  //   while (x < y - 1) {
-  //     x++;
-  //     result.push(x);
-  //   }
-  //   return result;
-  // }
-
-  // while (x > y + 1) {
-  //   x--;
-  //   result.push(x);
-  // }
-
-  // return result;
-
-
-
-  // var result =  [];
-  // var rangeLength = Math.abs(x - y) - 1;
-  // // var start;
-
-  // if (rangeLength <= 1) {
-  //   return [];
-  // }
-
-  // // if (x < y) {
-  // //   start = x + 1;
-  // // } else {
-  // //   start = x - 1;
-  // // }
-
-  // if (x < y) {
-  //   result.push(x + 1);
-  // }
-
-  // result.push(x - 1);
-
-
-  // if (x < y) {
-  //   // while (rangeLength > 0) {
-  //   //   result.push(start);
-  //   //   start++;
-  //   //   rangeLength--;
-  //   // }
-  //   result = result.concat(range(x + 1, y));
-  //   return result;
-  // }
-
-  // result = result.concat(range(x - 1, y));
-  // return result;
-
-
-
-  // if (x < y) {
-  //   end = y - 1;
-  // } else {
-  //   end = y + 1;
-  // }
-
-
-  // if ((x > y && x - y <= 1) || (x < y && y - x <= 1)) {
-  //   return [];
-  // }
-
-  // if (result.length === rangeLength) {
-  //   return result;
-  // }
-
-  // if (x > y) {
-  //   result.push(x - 1);
-  //   return range(x - 1, y);
-  // } else {
-  //   result.push(x + 1);
-  //   return range(x + 1, y);
-  // }
-
-
-  // var result =  [];
-  // var rangeLength;
-  // if (x > y) {
-  //   rangeLength = (x - y) - 1;
-  // } else {
-  //   rangeLength = (y - x) - 1;
-  // }
-
-  // if ((x > y && x - y <= 1) || (x < y && y - x <= 1)) {
-  //   return [];
-  // }
-
-  // if (result.length === rangeLength) {
-  //   return result;
-  // }
-
-  // if (x > y) {
-  //   result.push(x - 1);
-  //   return range(x - 1, y);
-  // } else {
-  //   result.push(x + 1);
-  //   return range(x + 1, y);
-  // }
-
-  // var positiveX = Math.abs(x);
-  // var positiveY = Math.abs(y);
-  // if (positiveX > positiveY && (positiveX - positiveY <= 1)) {
-  //   return [];
-  // } else if (positiveX > positiveY) {
-
-  //   result.push(x - 1);
-  // }
-
-  // if (x > y && x - y <= 1) {
-  //   return [];
-  // } else if (x === (y + 2)) {
-  //   result.push(x - 1);
-  //   return result;
-  // } else if (x > y) {
-  //   result.push(x - 1);
-  //   range(x - 1, y);
-  //   return result;
-  // } else if (y - x <= 1) {
-  //   return result;
-  // } else if (x === (y - 2)) {
-  //   result.push(x + 1);
-  //   return result;
-  // }
-  // result.push(x + 1);
-  // range(x + 1, y);
-  // return result;
-
 };
+
+
+
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
@@ -244,7 +116,26 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+
+  if (exp === 0) {
+    return 1;
+  } else if (exp > 0) {
+    exp--;
+    return base *= exponent(base, exp);
+  }
+
+  var count = 1 / base;
+  exp++;
+  while (exp < 0) {
+    count /= base;
+    exp++;
+  }
+  return count;
+
 };
+
+
+
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
