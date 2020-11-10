@@ -152,51 +152,52 @@ var exponent = function(base, exp) {
 // turns out, ints between 0 and 1 weren't included in this test!
 
 var powerOfTwo = function(n) {
-  if (n <= 0) {
+  if (n < 1) {
     return false;
-  }
-  if (n === 1) {
+  } else if (n === 1) {
     return true;
-  }
-
-  // if (n > 0 && n < 1) {
-  //   return powerOfTwo(n * 2);
-  // }
-
-  if (n > 1) {
+  } else {
     return powerOfTwo(n / 2);
   }
-
-  return false;
 };
 
-
-// if (n > 0 && n < 1) {
-//   if (powerOfTwo(n * 2) > 1) {
-//     return false;
-//   }
-// }
-// if (n > 1) {
-//   if (powerOfTwo(n / 2) < 1) {
-//     return false;
-//   }
-// }
-// return false;
-
-
-//while (n > 1) {
-  //   n /= 2;
-  // }
-  // if (n === 1) {
-  //   return true;
-  // }
-  // return false;
 
 
 
 // 9. Write a function that reverses a string.
+// input: string
+// output: new string
+// edge case: not a string
 var reverse = function(string) {
+  var reversed = string[string.length - 1];
+  if (string.length === 1) {
+    return reversed;
+  }
+
+  var arr = string.split('');
+  arr.pop();
+  var shorterString = arr.join('');
+  return reversed += reverse(shorterString);
 };
+
+
+  // var reversed = '';
+
+  // if (typeof string === 'string') {
+  //   var arr = string.split();
+  // }
+
+  // if (arr.length === 0) {
+  //   return reversed;
+  // }
+
+  // reversed += arr[arr.length - 1];
+  // arr.pop();
+  // reversed += reverse(arr);
+
+
+
+
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
