@@ -221,7 +221,6 @@ var modulo = function(x, y) {
   if (y === 0) {
     return NaN;
   }
-
   if (x === 0) {
     return 0;
   }
@@ -238,33 +237,11 @@ var modulo = function(x, y) {
     return x;
   }
 
+  if (x < 0 && y > 0) {
+    return modulo(x + y, y);
+  }
+
   return modulo(x - y, y);
-
-  // if (x > y) {
-  //  return modulo(x - y, y);
-  // }
-
-  // while (x < y) {
-  //   return modulo(x + y, y);
-  // }
-
-
-
-  // if (x < 0) {
-  //   x += x + x;
-  // }
-
-  // if (x > y) {
-  //   return modulo(x - y, y);
-  // }
-  // return x;
-
-
-  // if (x < y ) {
-  //   modulo(x + y, y);
-  // }
-  // return x;
-
 };
 
 
