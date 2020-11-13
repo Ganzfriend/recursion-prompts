@@ -250,8 +250,32 @@ var modulo = function(x, y) {
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
+// input: two integers
+// output: one integer (the product of the two)
+// edge cases: one or both ints are negative
 var multiply = function(x, y) {
+
+  // if y is 0, return x
+  if (y === 0) {
+    return 0;
+  }
+
+  // if y is positive, return x plus a call on this function where y is 1 less
+  if (y > 0) {
+    return x + multiply(x, y - 1);
+  }
+
+  // if (x < 0 && y < 0) {
+  //   return multiply(x + x + x, y + y + y);
+  // }
+
+  // if y is negative, return x plus a call where y is 1 more
+  if (y < 0) {
+    return -x - multiply(x, y + 1);
+  }
 };
+
+
 
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods to arrive at an approximate quotient (ignore decimal endings).
